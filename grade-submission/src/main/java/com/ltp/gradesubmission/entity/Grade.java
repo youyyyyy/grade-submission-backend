@@ -1,5 +1,6 @@
 package com.ltp.gradesubmission.entity;
 
+import com.ltp.gradesubmission.validation.Score;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Grade {
     @Column(name = "id")
     private Long id;
 
+    @Score
     @Column(name = "score", nullable = false)
     private String score;
 

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,10 +23,12 @@ public class Student {
     private Long id;
 
     @NonNull
+    @NotBlank(message = "Name cannot be blank")
     @Column(name = "name", nullable = false)
     private String name;
 
     @NonNull
+    @Past(message = "The birth date must be in the past")
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
