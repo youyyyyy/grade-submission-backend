@@ -1,35 +1,34 @@
 package com.ltp.gradesubmission.entity;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Table(name = "student")
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @NonNull
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @NonNull
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getBirthDate() {
-        return this.birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Grade> grades;
 }
