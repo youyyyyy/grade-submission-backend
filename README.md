@@ -10,6 +10,7 @@ This project covers:
 - JPA
 - Exception handling
 - Field validation
+- JWT
 
 <br>
 
